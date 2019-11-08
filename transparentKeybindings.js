@@ -563,6 +563,7 @@ const transparentActionMap =
 	      goToNormalMode();
 	    }
 	  },
+<<<<<<< HEAD
 	  'jk': e => 
 	  {
 	    // guard against accidently pressing jk while in the menu 
@@ -600,6 +601,51 @@ const transparentActionMap =
 	    event.preventDefault();
 	  },
 	  'ctrl-k': e => 
+||||||| merged common ancestors
+	  'jk': e => 
+	  {
+	    // guard against accidently pressing jk while in the menu 
+	    if(!WF.focusedItem())
+	      return;
+
+	    goToNormalMode();
+
+	    // remove j from under the cursor
+	    const currentOffset = state.get().anchorOffset
+	    WF.insertText("");
+	    setCursorAt(currentOffset);
+	    goToInsertMode();
+	    goToNormalMode();
+	    goToNormalMode();
+	    setCursorAt(currentOffset);
+
+	    // prevent k from being typed out.
+	    event.preventDefault();
+	  },
+	  'ctrl-k': e => 
+=======
+	  // 'jk': e =>
+	  // {
+	  //   // guard against accidently pressing jk while in the menu
+	  //   if(!WF.focusedItem())
+	  //     return;
+    //
+	  //   goToNormalMode();
+    //
+	  //   // remove j from under the cursor
+	  //   const currentOffset = state.get().anchorOffset
+	  //   WF.insertText("");
+	  //   setCursorAt(currentOffset);
+	  //   goToInsertMode();
+	  //   goToNormalMode();
+	  //   goToNormalMode();
+	  //   setCursorAt(currentOffset);
+    //
+	  //   // prevent k from being typed out.
+	  //   event.preventDefault();
+	  // },
+	  'ctrl-k': e =>
+>>>>>>> remove jk binding
 	  {
 		  HandleJumpTo();
 	  },
